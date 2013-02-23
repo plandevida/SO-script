@@ -9,7 +9,9 @@ if [ $# -ne 1 ] ; then
 fi
 
 if [ -f $fichero ] ; then
-	
+	echo ""	
+	echo "SCRIPT QUE OBTIENE LA INFORMACIÓN DE UN USUARIO UNIX DE UN FICHERO CON FORMATO passwd"
+	echo ""
 	echo -n "introduce el nombre del usuario (fin termina): "
 	read usuario
 
@@ -21,19 +23,22 @@ if [ -f $fichero ] ; then
 			echo "El usuario $usuario no existe en el fichero: $fichero."
 			exit 1
 		else
-			echo -n "TODO: rutina de tratamiento de la cadena: "
-			echo $comando
 			echo ""
-			login=""
-			nombre=""
-			gid=""
-			uid=""
-			home=""
-			shell=""
 
-			while [ $comando != "" ] ; do
-				
-			done
+			login=`echo $comando | cut -d : -f 1`
+			nombre=`echo $comando | cut -d : -f 5`
+			gid=`echo $comando | cut -d : -f 4`
+			uid=`echo $comando | cut -d : -f 3`
+			home=`echo $comando | cut -d : -f 6`
+			shell=`echo $comando | cut -d : -f 7`
+
+			echo "DATOS DEL USUARIO:"
+			echo "Login: $login"
+			echo "Nombre: $nombre"
+			echo "UID: $uid"
+			echo "GID: $gid"
+			echo "home: $home"
+			echo "shell: $shell"
 		fi
 
 		echo -n "introduce el nombre del usuario: "
