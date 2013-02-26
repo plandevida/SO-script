@@ -4,7 +4,7 @@ fichero=$1
 
 # Primero se comprueba que hemos pasado el parámetro
 if [ $# -ne 1 ] ; then
-	echo "Uso: ./$0 fichero_passwords"
+	echo "Uso: ./$0 fichero_passwords" 1>&2
 	exit 1
 fi
 
@@ -46,7 +46,7 @@ if [ -f $fichero ] ; then
 		read usuario
 	done
 else
-	echo "El fichero no existe." 1>&2
+	echo "El fichero no existe o no es regular." 1>&2
 	
 	exit 2;
 fi
