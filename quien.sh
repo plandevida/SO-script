@@ -46,7 +46,7 @@ if [ -f $fichero ] ; then
 		read usuario
 	done
 else
-	echo "El fichero no existe o no es regular." 1>&2
+	echo "El fichero '$fichero' no existe o no es regular." 1>&2
 	
 	exit 2;
 fi
